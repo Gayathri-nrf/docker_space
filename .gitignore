@@ -1,6 +1,21 @@
-# editors
+# Build output
+build/
+build_*/
+
+# west's per-project cache files, if any leak in
+*.uf2
+*.map
+*.dfu
+
+# Editors
+.vscode/
 *.swp
 *~
 
-# build
-/build*/
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Kconfig / cmake generated
+*.kconfig_dfu*
+compile_commands.json

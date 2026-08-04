@@ -1,0 +1,13 @@
+manifest:
+  remotes:
+    - name: nrfconnect
+      url-base: https://github.com/nrfconnect
+
+  projects:
+    - name: sdk-nrf
+      remote: nrfconnect
+      revision: v3.4.0  # Pins workspace to the stable LTS version
+      import: true
+
+  self:
+    path: .
