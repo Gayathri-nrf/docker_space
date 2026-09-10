@@ -5,9 +5,11 @@ manifest:
 
   projects:
     - name: sdk-nrf
+      repo-path: sdk-nrf
+      path: nrf
       remote: nrfconnect
       revision: v3.4.0  # Pins workspace to the stable LTS version
       import: true
 
   self:
-    path: .
+    path: docker_space
