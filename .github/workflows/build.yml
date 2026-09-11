@@ -1,0 +1,28 @@
+name: Build Firmware
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t docker-blinky-ci:latest .
+
+      - name: Run build inside container, extract artifacts
+        run: |
+          mkdir -p build_output
+          docker run --rm -v ${{ github.workspace }}/build_output:/workspace/build docker-blinky-ci:latest
+
+      - name: Upload firmware artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker_space-firmware
+          path: build_output/docker_space/zephyr/zephyr.hex
